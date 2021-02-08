@@ -21,11 +21,9 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@uifabric/icons": "^5.0.1",
+    "@fluentui/react": "^7.158.1",
     "classnames": "^2.2.5",
     "execa": "^1.0.0",
-    "office-ui-fabric-react": "^5.0.1",
-    "playland": "^2.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "reiconify": "^2.2.2",

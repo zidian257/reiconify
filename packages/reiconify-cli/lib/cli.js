@@ -54,7 +54,7 @@ const run = async () => {
   const shellOpts = {
     cwd: root,
     stdio: 'inherit',
-    env: {CWD: process.cwd(), SRC_DIR: path.resolve(argv.srcDir)},
+    env: {CWD: process.cwd(), ICONS_PATH: path.resolve(argv.esDir)},
   }
   if (argv.serve) {
     await shell(`playland`, shellOpts)

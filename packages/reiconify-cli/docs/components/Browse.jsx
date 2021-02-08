@@ -1,13 +1,14 @@
 import React from 'react'
-import {SearchBox} from 'office-ui-fabric-react/lib/SearchBox'
-import {Toggle} from 'office-ui-fabric-react/lib/Toggle'
-import {TooltipHost} from 'office-ui-fabric-react/lib/Tooltip'
+import {Fabric,SearchBox,Toggle,TooltipHost} from '@fluentui/react'
+import {initializeIcons} from '@uifabric/icons'
 import cx from 'classnames'
 import * as Icons from '~icons'
 import mm from 'micromatch'
 import Batch from './Batch'
 import LineBox from './LineBox'
 import styles from './Browse.module.css'
+
+initializeIcons()
 
 const iconNames = Object.keys(Icons)
   // filter CJS `__esModule: true`
@@ -38,11 +39,14 @@ const Cell = ({name, Icon, color, large}) => (
 )
 
 class Browse extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+   this.state = {
     keyword: '',
     isNameShown: true,
     isColored: false,
     isLarger: false,
+  }
   }
 
   render() {
@@ -50,7 +54,7 @@ class Browse extends React.Component {
     const color = isColored ? 'lightseagreen' : 'currentColor'
 
     return (
-      <div>
+      <Fabric>
         <div className={styles.searchBox}>
           <SearchBox
             className={styles.searchInput}
@@ -64,19 +68,19 @@ class Browse extends React.Component {
               className={styles.toggle}
               label="name"
               checked={isNameShown}
-              onChanged={() => this.setState({isNameShown: !isNameShown})}
+              onChange={() => this.setState({isNameShown: !isNameShown})}
             />
             <Toggle
               className={styles.toggle}
               label="colorize"
               checked={isColored}
-              onChanged={() => this.setState({isColored: !isColored})}
+              onChange={() => this.setState({isColored: !isColored})}
             />
             <Toggle
               className={styles.toggle}
               label="larger"
               checked={isLarger}
-              onChanged={() => this.setState({isLarger: !isLarger})}
+              onChange={() => this.setState({isLarger: !isLarger})}
             />
           </div>
         </div>
@@ -99,7 +103,7 @@ class Browse extends React.Component {
             ))}
           />
         </div>
-      </div>
+      </Fabric>
     )
   }
 }

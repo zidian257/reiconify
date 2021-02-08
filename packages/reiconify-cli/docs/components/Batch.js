@@ -1,13 +1,13 @@
 import React from 'react'
 
 class Batch extends React.Component {
-  static defaultProps = {
-    perFrame: 100,
-  }
-
-  isUnmounting = false
-  state = {
-    frameCount: 1,
+  // isUnmounting = false
+  constructor(props) {
+    super(props)
+    this.state = {
+      frameCount: 1,
+    }
+    this.nextFrame = this.nextFrame.bind(this)
   }
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class Batch extends React.Component {
     this.isUnmounting = true
   }
 
-  nextFrame = () => {
+  nextFrame() {
     const {frameCount} = this.state
     const {items, perFrame} = this.props
     if (frameCount * perFrame >= items.length) {
@@ -43,6 +43,10 @@ class Batch extends React.Component {
     const {items, perFrame} = this.props
     return items.slice(0, frameCount * perFrame)
   }
+}
+
+Batch.defaultProps = {
+  perFrame: 100,
 }
 
 export default Batch
